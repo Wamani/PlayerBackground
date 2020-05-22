@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<p>可以一次上传多个歌曲，命名规则尽量保证为：歌手-歌名， 如 梁静茹 - 勇气.mp3</p>
+<form action="./upload" method="post" enctype="multipart/form-data">
+    <p><input type="file" name="files" id="files" multiple accept=".mp3, .flac, .ape"/></p>
+    <p><input type="submit" value="submit"></p>
+</form>
+<pre id="filelist" style="display:list-item;"></pre>
+
+<script type="text/javascript">
+    document.getElementById('files').addEventListener('change', function (e) {
+        var list = document.getElementById('filelist');
+        list.innerHTML = '';
+        for (var i = 0; i < this.files.length; i++) {
+            if (this.files[i].size > 1024 * 1024)
+                fileSize = (Math.round(this.files[i].size * 100 / (1024 * 1024)) / 100).toString() + ' MB';
+            else
+                fileSize = (Math.round(this.files[i].size * 100 / 1024) / 100).toString() + ' KB';
+            list.innerHTML += (i + 1) + '. ' + this.files[i].name + " fileSize: " + fileSize + '\n';
+        }
+        if (list.innerHTML == '') list.style.display = 'none';
+        else list.style.display = 'block';
+    });
+</script>
+</body>
+</html>

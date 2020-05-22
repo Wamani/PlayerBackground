@@ -1,0 +1,17 @@
+{
+  "Port": "8002",
+  "Logger": {
+    "LogLevel": "debug",
+    "MaxRotateSize": 1024
+  },
+  "MongoDB": {
+    "Url": "mongodb://10.64.32.210:27017/xid",
+    "Name": "xid",
+    "TimeOut": 60,
+    "PoolLimit": 30,
+    "SessionTimeout": 10
+  },
+  "Server": {
+    "MusicPath": "music"
+  }
+}
