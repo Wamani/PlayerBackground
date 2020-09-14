@@ -1,11 +1,5 @@
-package server
+package data
 
-import (
-	"github.com/sirupsen/logrus"
-)
-
-var log *logrus.Logger
-var config Config
 
 // ErrorCode common error code
 type ErrorCode struct {
@@ -15,14 +9,16 @@ type ErrorCode struct {
 }
 type Config struct {
 	MusicPath string
+	MysqlUrl string
 }
 
 type File struct {
 	Name   string `json:"name"`
-	Author string `json:"name"`
+	Author string `json:"author"`
 }
 type Response struct {
 	ErrorCode int    `json:"error_code"`
 	ErrorMsg  string `json:"error_msg"`
 	FileInfos []File `json:"file_infos"`
 }
+

@@ -1,6 +1,7 @@
 package server
 
 import (
+	"../data"
 	"github.com/gin-gonic/gin"
 	"io"
 	"io/ioutil"
@@ -10,7 +11,7 @@ import (
 )
 
 func GetList(c *gin.Context) {
-	var response Response
+	var response data.Response
 	path := config.MusicPath
 	log.Debug("current request path: " + path)
 	fileList, err := GetAllFiles(path)
@@ -19,13 +20,14 @@ func GetList(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, GetErrorCode(-1, err.Error()))
 		return
 	}
-	var file File
-	var files []File
+	var file data.File
+	var files []data.File
 	for _, ele := range fileList {
 		file.Name = ele
+		file.Author = "test"
 		files = append(files, file)
 	}
-	response.ErrorCode = E_OK
+	response.ErrorCode = data.E_OK
 	response.ErrorMsg = "success"
 	response.FileInfos = files
 	c.JSON(http.StatusOK, response)

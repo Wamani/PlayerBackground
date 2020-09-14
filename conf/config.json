@@ -1,5 +1,5 @@
 {
-  "Port": "8002",
+  "Port": "8080",
   "Logger": {
     "LogLevel": "debug",
     "MaxRotateSize": 1024
@@ -12,6 +12,7 @@
     "SessionTimeout": 10
   },
   "Server": {
-    "MusicPath": "music"
+    "MusicPath": "music",
+    "MysqlUrl": "root:Wyx@1234@(192.168.123.232:3306)/player_meta?charset=utf8&parseTime=true&loc=Local"
   }
 }

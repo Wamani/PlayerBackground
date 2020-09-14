@@ -142,6 +142,11 @@ func main() {
 	router.GET("list", server.GetList)
 	router.GET("file", server.GetFile)
 	router.POST("upload", server.Upload)
+
+	// register and login
+	router.POST("v1/users", server.Register)
+	router.POST("v1/sessions", server.Login)
+	router.GET("/v1/users/:id", server.GetUserInfo)
 	address := "0.0.0.0" + ":" + conf.BrokerConfig.PORT
 	log.Infoln("Listening and serving HTTP on", address)
 	err := router.Run(address)

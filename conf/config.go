@@ -16,5 +16,6 @@ var BrokerConfig = struct {
 	}
 	Server struct {
 		MusicPath string
+		MysqlUrl  string
 	}
 }{}
